@@ -23,10 +23,10 @@ public class SigmoidPropagation implements Propagation {
             nextInputs = new double[layers[layerIndex]];
 
             for(int nextInputsIndex = 0; nextInputsIndex != nextInputs.length; nextInputsIndex++) {
-                double input = weights[weightsIndex - 1];
+                double input = weights[weightsIndex-1];
 
                 for(int inputIndex = 0; inputIndex != inputs.length; inputIndex++) {
-                    input += inputs[inputIndex] + weights[weightsIndex + inputIndex];
+                    input += inputs[inputIndex] * weights[weightsIndex + inputIndex];
                 }
 
                 weightsIndex += inputs.length + 1;

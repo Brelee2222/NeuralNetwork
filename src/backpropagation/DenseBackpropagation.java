@@ -9,6 +9,10 @@ public class DenseBackpropagation implements Backpropagation {
         return learningRate;
     }
 
+    public DenseBackpropagation(double learningRate) {
+        this.learningRate = learningRate;
+    }
+
     @Override
     public double[] backpropagation(double[] errors, double[] neuronResults, NeuralNetwork neuralNetwork) {
         double[] weights = neuralNetwork.getWeights();
@@ -19,14 +23,12 @@ public class DenseBackpropagation implements Backpropagation {
         int neuronResultsIndex = neuronResults.length - errors.length;
         int weightsIndex = weights.length;
 
-        neuronResultsIndex -= errors.length;
-
         for(int layerIndex = layers.length - 2; layerIndex != -1; layerIndex--) {
 
             for(int errorIndex = errors.length-1; errorIndex != -1; errorIndex--) {
                 double result = neuronResults[neuronResultsIndex + errorIndex];
 
-                errors[errorIndex] = errors[errorIndex] * result * (1 - result);
+                errors[errorIndex] *= result * (1 - result);
             }
 
             double[] nextErrors = new double[layers[layerIndex]];

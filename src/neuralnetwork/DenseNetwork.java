@@ -9,9 +9,9 @@ public class DenseNetwork implements NeuralNetwork {
     double[] weights;
 
     public DenseNetwork(DoubleSupplier weights, int... layers) {
-        int totalWeights = layers[0], prevLayer = totalWeights;
+        int totalWeights = 0, prevLayer = layers[0];
         for(int layerIndex = 1; layerIndex != layers.length; layerIndex++) {
-            totalWeights += prevLayer * (prevLayer = layers[layerIndex]);
+            totalWeights += prevLayer * (prevLayer = layers[layerIndex]) + prevLayer;
         }
 
         this.weights = DoubleStream.generate(weights).limit(totalWeights).toArray();
