@@ -4,14 +4,16 @@ import neuralnetwork.NeuralNetwork;
 
 public class SigmoidPropagation implements Propagation {
 
-    public double activate(double input) {
-        return 1/(1 + Math.exp(-input));
+    public final NeuralNetwork neuralNetwork;
+
+    public SigmoidPropagation(NeuralNetwork neuralNetwork) {
+        this.neuralNetwork = neuralNetwork;
     }
 
     @Override
-    public double[] propagation(double[] inputs, NeuralNetwork network) {
-        int[] layers = network.getLayers();
-        double[] weights = network.getWeights();
+    public double[] propagation(double[] inputs) {
+        int[] layers = neuralNetwork.getLayers();
+        double[] weights = neuralNetwork.getWeights();
 
         int weightsIndex = 1;
 
@@ -31,7 +33,7 @@ public class SigmoidPropagation implements Propagation {
 
                 weightsIndex += inputs.length + 1;
 
-                nextInputs[nextInputsIndex] = activate(input);
+                nextInputs[nextInputsIndex] = 1/(1 + Math.exp(-input));
             }
 
             inputs = nextInputs;

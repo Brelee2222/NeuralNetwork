@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cadb8f48-7ecf-4965-86bb-829f95adeb18" name="Changes" comment="Refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backpropagation/Backpropagation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backpropagation/Backpropagation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backpropagation/DenseBackpropagation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backpropagation/DenseBackpropagation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/neuralnetwork/DenseNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neuralnetwork/DenseNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/propagation/SigmoidPropagation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/propagation/SigmoidPropagation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

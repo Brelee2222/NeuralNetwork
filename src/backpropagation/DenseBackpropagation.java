@@ -3,18 +3,20 @@ package backpropagation;
 import neuralnetwork.NeuralNetwork;
 
 public class DenseBackpropagation implements Backpropagation {
+    public final NeuralNetwork neuralNetwork;
     public double learningRate;
 
     public double getLearningRate() {
         return learningRate;
     }
 
-    public DenseBackpropagation(double learningRate) {
+    public DenseBackpropagation(NeuralNetwork neuralNetwork, double learningRate) {
         this.learningRate = learningRate;
+        this.neuralNetwork = neuralNetwork;
     }
 
     @Override
-    public double[] backpropagation(double[] errors, double[] neuronResults, NeuralNetwork neuralNetwork) {
+    public double[] backpropagation(double[] errors, double[] neuronResults) {
         double[] weights = neuralNetwork.getWeights();
         int[] layers = neuralNetwork.getLayers();
 
@@ -41,12 +43,12 @@ public class DenseBackpropagation implements Backpropagation {
                 weightsIndex -= nextErrors.length;
 
                 for(int nextErrorsIndex = nextErrors.length-1; nextErrorsIndex != -1; nextErrorsIndex--) {
-                    nextErrors[nextErrorsIndex] += errorSignal * weights[weightsIndex + nextErrorsIndex];
+                    nextErrors[nextErrorsIndex] += weights[weightsIndex + nextErrorsIndex] * errorSignal;
 
-                    weights[weightsIndex + nextErrorsIndex] += errorSignal * neuronResults[neuronResultsIndex + nextErrorsIndex] * learningRate;
+                    weights[weightsIndex + nextErrorsIndex] += learningRate * neuronResults[neuronResultsIndex + nextErrorsIndex] * errorSignal;
                 }
 
-                weights[--weightsIndex] += errorSignal * learningRate;
+                weights[--weightsIndex] += learningRate * errorSignal;
             }
 
             errors = nextErrors;
