@@ -2,7 +2,7 @@ package propagation;
 
 import neuralnetwork.NeuralNetwork;
 
-public class SigmoidPropagation implements Propagation {
+public class LogisticPropagation implements Propagation {
 
     public final NeuralNetwork neuralNetwork;
 
